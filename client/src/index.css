@@ -1,0 +1,71 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    @apply bg-ink;
+  }
+
+  body {
+    @apply min-h-screen bg-ink font-display text-slate-100 antialiased;
+    background-image:
+      radial-gradient(circle at top left, rgba(124, 247, 200, 0.12), transparent 30%),
+      radial-gradient(circle at top right, rgba(110, 231, 255, 0.14), transparent 25%),
+      linear-gradient(180deg, #06070a 0%, #090d14 35%, #05070b 100%);
+  }
+
+  * {
+    scrollbar-color: rgba(124, 247, 200, 0.35) rgba(255, 255, 255, 0.04);
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(124, 247, 200, 0.3);
+    border-radius: 999px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.04);
+  }
+}
+
+@layer components {
+  .glass-panel {
+    @apply rounded-[28px] border border-white/10 bg-white/[0.05] shadow-glass backdrop-blur-xl;
+  }
+
+  .panel-title {
+    @apply text-xs font-medium uppercase tracking-[0.32em] text-slate-400;
+  }
+
+  .input-surface {
+    @apply rounded-2xl border border-white/10 bg-black/30 px-4 py-3 text-sm text-slate-100 outline-none transition focus:border-glow/70 focus:ring-2 focus:ring-glow/20;
+  }
+
+  .stat-chip {
+    @apply rounded-full border border-white/10 bg-white/5 px-3 py-1 text-[11px] font-medium tracking-[0.2em] text-slate-300 uppercase;
+  }
+
+  .table-surface {
+    @apply overflow-hidden rounded-[26px] border border-white/10 bg-black/20 backdrop-blur-xl;
+  }
+
+  .soft-divider {
+    @apply border-white/10;
+  }
+
+  .toast-card {
+    @apply glass-panel border-l-4 px-4 py-3 text-sm shadow-2xl;
+  }
+}
