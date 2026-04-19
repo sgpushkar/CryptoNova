@@ -45,12 +45,14 @@ crypto-tracker/
 
 - Streams live Binance `@ticker` updates for 50 major pairs and rebroadcasts them to the frontend.
 - Stores live prices and chart history in memory for fast chart rendering and instant alert checks.
+- **Binance Portfolio Sync**: Connect your Binance account (Read-Only API) to track your live portfolio value across supported assets.
 - Persists alerts and alert history in MongoDB.
 - Supports server-side alert rules for:
   - price above INR
   - price below INR
   - move by INR from creation price
   - move by percentage from creation price
+  - **holding-value reminders**: trigger when your specific holding quantity reaches a target value.
 - Sends real Telegram Bot and email notifications when alerts trigger.
 - Keeps alerts active even while the user is offline or the frontend is closed.
 - Includes a premium dark UI with glassmorphism, live flashing price changes, search, sorting, watchlist, mobile layouts, and skeleton loading states.
@@ -60,6 +62,7 @@ crypto-tracker/
 - Node.js 18+
 - npm 9+
 - MongoDB running locally or a MongoDB Atlas connection string
+- (Optional) Binance API Key and Secret (Read-Only) for Portfolio Sync
 
 ## Install
 
@@ -192,7 +195,7 @@ When Email delivery is enabled on an alert, the frontend asks for the recipient 
 - Alerts and triggered history are stored in MongoDB.
 - The backend alert engine also performs a recurring sweep every second so alert checks continue even if the frontend is not connected.
 - Realtime updates are batched before broadcast to avoid unnecessary frontend re-renders.
-- The original `crypto_tracker_dashboard.html` is still present in the repo as the design reference that this full project grew from.
+- Binance API credentials used for portfolio sync are processed strictly in-memory and are never persisted to the database.
 
 ## Verified
 
