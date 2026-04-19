@@ -1,6 +1,6 @@
 # CryptoNova
 
-CryptoNova is a full-stack real-time cryptocurrency tracking platform built with TypeScript, React, Vite, TailwindCSS, Express, WebSocket, MongoDB, and Mongoose. It streams live Binance prices, keeps server-side alerts running even when the frontend is closed, and sends real Telegram plus email notifications when alerts trigger.
+CryptoNova is a full-stack real-time cryptocurrency tracking platform built with TypeScript, React, Vite, TailwindCSS, Express, WebSocket, MongoDB, and Mongoose. It streams live Binance prices and keeps server-side alerts running even when the frontend is closed.
 
 ## Folder Structure
 
@@ -53,7 +53,6 @@ crypto-tracker/
   - move by INR from creation price
   - move by percentage from creation price
   - **holding-value reminders**: trigger when your specific holding quantity reaches a target value.
-- Sends real Telegram Bot and email notifications when alerts trigger.
 - Keeps alerts active even while the user is offline or the frontend is closed.
 - Includes a premium dark UI with glassmorphism, live flashing price changes, search, sorting, watchlist, mobile layouts, and skeleton loading states.
 
@@ -80,18 +79,6 @@ Edit [server/.env](/c:/Users/Pushkar%20Mhatre/Downloads/Cryptonova/server/.env) 
 PORT=8080
 CLIENT_ORIGIN=http://localhost:5173
 MONGO_URI=mongodb://127.0.0.1:27017/cryptonova
-TELEGRAM_BOT_TOKEN=
-TELEGRAM_CHAT_ID=
-EMAIL_USER=
-EMAIL_PASS=
-```
-
-Optional SMTP overrides are also supported by the notification layer:
-
-```env
-EMAIL_HOST=smtp.gmail.com
-EMAIL_PORT=465
-EMAIL_SECURE=true
 ```
 
 Optional INR conversion override:
@@ -153,41 +140,6 @@ The server is configured to serve the built client from `client/dist` when it ex
 1. Create a cluster in MongoDB Atlas.
 2. Create a database user and allow your IP in network access.
 3. Replace `MONGO_URI` with the Atlas connection string.
-
-## Telegram Bot Setup
-
-1. Open Telegram and chat with `@BotFather`.
-2. Run `/newbot` and follow the prompts.
-3. Copy the bot token into `TELEGRAM_BOT_TOKEN`.
-4. Start a chat with your bot and send any message.
-5. Get your chat ID:
-   - Open `https://api.telegram.org/bot<YOUR_BOT_TOKEN>/getUpdates`
-   - Find the `chat.id` in the response
-6. Put that value into `TELEGRAM_CHAT_ID`.
-
-When Telegram delivery is enabled on an alert, the backend will call the Telegram Bot API directly.
-
-## Email Setup
-
-The backend uses NodeMailer.
-
-### Gmail Example
-
-1. Enable 2-Step Verification on your Google account.
-2. Create an App Password.
-3. Set:
-   - `EMAIL_USER=youraddress@gmail.com`
-   - `EMAIL_PASS=your_app_password`
-
-### Custom SMTP
-
-If you are using another provider, also set:
-
-- `EMAIL_HOST`
-- `EMAIL_PORT`
-- `EMAIL_SECURE`
-
-When Email delivery is enabled on an alert, the frontend asks for the recipient address per alert.
 
 ## Feature Notes
 
